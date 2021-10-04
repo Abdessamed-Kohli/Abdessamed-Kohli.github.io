@@ -1,0 +1,103 @@
+<!-- onchange -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src='index.js'></script>
+</head>
+
+<body>
+
+    <h1>Agence Eagle Flights </h1>
+    <h2>RESERVATION DES BILLETS [ALG - ISTANBUL] </h2>
+
+    <div>
+        <form action="/action_page.php" autocomplete="on">
+
+            <fieldset>
+                <legend>Personal Info:</legend>
+                <label for="fname">First name:</label><br>
+                <input type="text" id="fname" name="fname" value="Badro"><br>
+                <label for="lname">Last name:</label><br>
+                <input type="text" id="lname" name="lname" value="Abdel Malek"><br><br>
+            </fieldset>
+
+            <fieldset>
+                <legend>Choose your Company:</legend>
+                  <input type="radio" id="comp1" name="company" value="value1">
+                  <label for="comp1">Turkish Airlines</label><br>
+                <!--         <input type="radio" id="comp2" name="company" value="value2">
+          <label for="comp2">Air Algerie [Billets Indisponibles]</label><br> -->
+            </fieldset>
+            <br>
+
+            <fieldset>
+                <legend>Choose your flight date:</legend>
+                <input type="radio" id="date1" name='date'>
+                <label for="date1">2021 - 10 - 18 // <span id='price1'></span> <br>
+                    [ <span id='hour1'></span> ] <br>
+                </label><br>
+
+                <input type="radio" id="date2" name='date'>
+                <label for="date1">2021 - 10 - 21 // <span id='price2'></span> <br>
+                    [ <span id='hour2'></span> ] <br>
+                </label><br>
+
+                <input type="radio" id="date3" name='date'>
+                <label for="date1">2021 - 10 - 25 // <span id='price3'></span> <br>
+                    [ <span id='hour3'></span> ] <br>
+                </label><br>
+
+                <input type="radio" id="date4" name='date'>
+                <label for="date1">2021 - 10 - 28 // <span id='price4'></span> <br>
+                    [ <span id='hour4'></span> ] <br>
+                </label><br>
+
+            </fieldset>
+            <br>
+
+            <!--     <fieldset>
+        <legend>Choose your flight date drop down:</legend>
+        <label for='fdate'>Choose your flight date drop down: </label>
+        <select id='fdate' name='fdate'>
+          <optgroup label="Turkish">
+            <option value='2021-10-18'>2021-10-18</option>
+            <option value='2021-10-21'>2021-10-21</option>
+          </optgroup>
+          <optgroup label="Air Algerie">
+            <option value='2021-10-28'>2021-10-28</option>
+          </optgroup>
+        </select>
+      </fieldset>
+      <br> -->
+
+            <fieldset>
+                <legend>Payment Type:</legend>
+                  <input type="radio" id="bank" name="payment" value="value1">
+                  <label for="bank">Virement Bancaire Compte a Compte (CPA/CCP) [Gratuit]</label><br>
+                  <input type="radio" id="cash" name="payment" value="value2">
+                  <label for="cash">Cash [ + <span id='cash_fees_percentage'></span> %]</label><br>
+            </fieldset>
+            <br>
+
+            <!-- 
+            <input type="button" id='btn' value="Calculer le Devis"> 
+            
+            <input type="submit" value="Submit" 
+           onsubmit="alert('Hello World!')"> 
+            -->
+            <input type="reset" id='btn_reset' value="Re-initialisez Ce Formulaire">
+
+        </form>
+    </div>
+
+    <br>
+    <div>TOTAL PRICE : <b id='output'></b>
+    </div>
+    <br><br>
+
+</body>
+
+</html>
