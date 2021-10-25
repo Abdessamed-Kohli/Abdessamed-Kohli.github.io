@@ -1,0 +1,20 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.header {
+    position: relative;
+    background: url('../imgs/bg_TraversyMedia.png') no-repeat center center/cover;
+    height: 1100px;
+    width: 100%;
+    text-align: center;
+    padding: 0 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  

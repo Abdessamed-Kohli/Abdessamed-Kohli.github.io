@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookmarklets</title>
+
+    <style>
+        .button {
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+        .button1 {
+            background-color: white;
+            color: black;
+            border: 2px solid #4CAF50;
+        }
+
+        .button1:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .button2 {
+            background-color: white;
+            color: black;
+            border: 2px solid #008CBA;
+        }
+
+        .button2:hover {
+            background-color: #008CBA;
+            color: white;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>To Use any of Our Bookmarklets, Drag the button to your Browser Bookmark bar :</h1>
+
+    <a href="javascript: (function () {
+        // to use toggle() we must use jQuery
+        var script_tag = document.createElement(" script");
+        script_tag.src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" ;
+        document.getElementsByTagName("head")[0].appendChild(script_tag);
+        $('.ytp-chrome-top,.ytp-chrome-bottom').toggle(); })();">
+        <button class="button button1">
+            Toggle Youtube Control Bar</button>
+    </a>
+
+    <a
+        href="javascript: var v = document.querySelector('video'); var t = prompt('Set the playback rate'); v.playbackRate = parseFloat(t);">
+        <button class="button button2">
+            Change HTML 5 Video Speed</button>
+    </a>
+
+</body>
+
+</html>

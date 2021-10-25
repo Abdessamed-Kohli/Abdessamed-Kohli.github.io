@@ -1,17 +1,28 @@
-<!-- onchange -->
-
+<!--
+# Payment Methodes :
+    if CMP == AH 
+        By CCP only
+    elif CMP == TK 
+        By CCP or CPA
+# TIME :
+    By RDV only
+# Locations :
+    + Hamiz 
+    + Alger centre
+-->
 <!DOCTYPE html>
 <html>
 
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src='index.js'></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <script src='../js/jquery.min.js'></script>
+    <script src='../js/flightPriceCalculator.js'></script>
 </head>
 
 <body>
 
     <h1>Agence Eagle Flights </h1>
-    <h2>RESERVATION DES BILLETS [ALG - ISTANBUL] </h2>
+    <h2>RESERVATION DES BILLETS [ALG - ISTANBUL] Ces Prix Vont Etres Mis a jour dans 24 Heures</h2>
 
     <div>
         <form action="/action_page.php" autocomplete="on">
