@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KOHLI Abdou Search Engines</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        // JSON data
+        SearchEnginesURLs = {
+            'google': 'https://google.com/search?q=%s&hl=en',
+            'duckduckgo': 'https://duckduckgo.com/?q=%s',
+            'bing': 'https://bing.com/search?q=%s',
+
+            // Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE [duplicate]
+            // https://stackoverflow.com/questions/44572387/failed-to-load-resource-neterr-blocked-by-response
+            'facebook_all': 'http://www.facebook.com/search/top/?q=%s',
+            'facebook_people': 'https://facebook.com/search/people/?q=%s',
+
+            'linkedin_all': 'https://linkedin.com/search/results/all/?keywords=%s',
+            'linkedin_people': 'https://linkedin.com/search/results/people/?keywords=%s',
+
+            'alternativeto': 'https://alternativeto.net/browse/search/?q=%s'
+        }
+    </script>
+
+</head>
+
+<body>
+    <h1>KOHLI Abdou Search Engines</h1>
+    <h2>
+        <a href="chrome://settings/searchEngines">chrome://settings/searchEngines</a>
+    </h2>
+
+    <!-- Window open() -->
+    <!-- https://www.w3schools.com/jsref/met_win_open.asp -->
+
+
+    <h2> You Should Allow Pop-ups in order to open mutiple tabs</h2>
+
+    <form id="myForm">
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname" placeholder="John"><br>
+
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname" placeholder="Doe"><br>
+
+        <br>
+        <input type="checkbox" id="google" name="cb1">
+        <label for="google"> Google</label><br>
+        <input type="checkbox" id="bing" name="cb1">
+        <label for="bing"> Bing</label><br>
+        <input type="checkbox" id="duckduckgo" name="cb1">
+        <label for="duckduckgo"> duckduckgo</label><br>
+        <input type="checkbox" id="facebook" name="cb1">
+        <label for="facebook"> Facebook</label><br>
+        <input type="checkbox" id="linkedin" name="cb1">
+        <label for="linkedin"> LinkedIn</label><br>
+        <input type="checkbox" id="alternativeto" name="cb1">
+        <label for="alternativeto"> alternativeto</label>
+
+        <br><br>
+        <input type="submit" value="Open Your Searches">
+    </form>
+
+    <script>
+        $(document).ready(function () {
+            $('#myForm').submit(function (e) {
+                e.preventDefault();
+                // or return false;
+
+                var fname = $('#fname').val();
+                var lname = $('#lname').val();
+                var query = `${fname} ${lname}`;
+
+                if ($('#google').prop("checked") == true) {
+                    window.open(SearchEnginesURLs.google.replace('%s', query));
+                }
+                if ($('#bing').prop("checked") == true) {
+                    window.open(SearchEnginesURLs.bing.replace('%s', query));
+                }
+                if ($('#facebook').prop("checked") == true) {
+                    window.open(SearchEnginesURLs.facebook_people.replace('%s', query));
+                }
+                if ($('#linkedin').prop("checked") == true) {
+                    window.open(SearchEnginesURLs.linkedin_people.replace('%s', query));
+                }
+                if ($('#duckduckgo').prop("checked") == true) {
+                    window.open(SearchEnginesURLs.duckduckgo.replace('%s', query));
+                }
+                if ($('#alternativeto').prop("checked") == true) {
+                    window.open(SearchEnginesURLs.alternativeto.replace('%s', query));
+                }
+
+            });
+        });
+    </script>
+
+
+
+
+</body>
+
+</html>
