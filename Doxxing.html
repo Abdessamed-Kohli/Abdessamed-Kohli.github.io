@@ -5,27 +5,190 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KOHLI Abdou Search Engines</title>
+    <title>KOHLI Abdou Omnibox (Multi Search Engines) | Version 1.3</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script>
         // JSON data
-        SearchEnginesURLs = {
-            'google': 'https://google.com/search?q=%s&hl=en',
-            'duckduckgo': 'https://duckduckgo.com/?q=%s',
-            'bing': 'https://bing.com/search?q=%s',
+        SearchEnginesArrayJSON = [{
+                id: 'google_english',
+                title: 'Google English',
+                url: 'https://google.com/search?q=%s&hl=en',
+                keyword: '',
+            },
+            {
+                id: 'google_french',
+                title: 'Google French',
+                url: 'https://google.com/search?q=%s&hl=fr',
+            },
+            {
+                id: 'duckduckgo',
+                title: 'DuckDuckGo',
+                url: 'https://duckduckgo.com/?q=%s',
+            },
+            {
+                id: 'bing',
+                title: 'MicroSoft Bing',
+                url: 'https://bing.com/search?q=%s',
+            },
+            {
+                id: 'yahoo',
+                title: 'Yahoo.com',
+                url: 'https://search.yahoo.com/search?&p=%s',
+            },
+            {
+                id: '_______ GOOGLE PRODUCTS',
+                title: '_______ GOOGLE PRODUCTS _____',
+                url: '',
+            },
+            {
+                id: 'youtube',
+                title: 'Youtube',
+                url: 'https://youtube.com/results?search_query=%s'
+            },
+            {
+                id: 'youtube_Thumbnail',
+                title: 'Youtube Thumbnail (img.youtube.com/vi/%s/maxresdefault.jpg)',
+                url: 'http://img.youtube.com/vi/%s/maxresdefault.jpg'
+            },
+            {
+                id: 'GoogleDrive',
+                title: 'Google Drive',
+                url: 'https://drive.google.com/drive/search?q=%s'
+            },
+            {
+                id: 'GoogleTranslate',
+                title: 'Google Translate',
+                url: 'https://translate.google.com/#auto|auto|%s'
+            },
+            {
+                id: 'GoogleContact',
+                title: 'Google Contact',
+                url: 'https://contacts.google.com/search/%s'
+            },
+            {
+                id: 'GoogleMaps',
+                title: 'Google Maps',
+                url: 'https://google.com/maps/search/%s?hl=en'
+            },
+            {
+                id: 'Google_Image',
+                title: 'Google Image Search',
+                url: 'https://google.com/imghp?hl=en',
+            },
+            {
+                id: 'Google_Keep',
+                title: 'Google Keep (Note App)',
+                url: 'https://keep.google.com/#search/text%253D%s',
+            },
 
+
+            {
+                id: '_______ SOCIAL MEDIA',
+                title: '_______ SOCIAL MEDIA _____',
+                url: '',
+            },
             // Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE [duplicate]
             // https://stackoverflow.com/questions/44572387/failed-to-load-resource-neterr-blocked-by-response
-            'facebook_all': 'http://www.facebook.com/search/top/?q=%s',
-            'facebook_people': 'https://facebook.com/search/people/?q=%s',
+            {
+                id: 'facebook_all',
+                title: 'Facebook (All)',
+                url: 'https://facebook.com/search/top/?q=%s',
+            },
+            {
+                id: 'facebook_people',
+                title: 'Facebook (People)',
+                url: 'https://facebook.com/search/people/?q=%s',
+            },
+            {
+                id: 'linkedin_all',
+                title: 'LinkedIn (All)',
+                url: 'https://linkedin.com/search/results/all/?keywords=%s',
+            },
+            {
+                id: 'linkedin_people',
+                title: 'LinkedIn (People)',
+                url: 'https://linkedin.com/search/results/people/?keywords=%s',
+            },
+            {
+                id: 'twitter',
+                title: 'Twitter',
+                url: 'https://twitter.com/search?q=%s',
+            },
+            {
+                id: 'github',
+                title: 'GitHub (Source Code)',
+                url: 'https://github.com/search?q=%s',
+            },
+            {
+                id: 'github_Gist',
+                title: 'GitHub Gist (Source Code)',
+                url: 'https://gist.github.com/search?q=%s',
+            },
 
-            'linkedin_all': 'https://linkedin.com/search/results/all/?keywords=%s',
-            'linkedin_people': 'https://linkedin.com/search/results/people/?keywords=%s',
+            {
+                id: '_______ E-Commerce _____',
+                title: '_______ E-Commerce _____',
+                url: '',
+            },
+            {
+                id: 'ouedkniss',
+                title: 'OuedKniss ( Algeria #1 )',
+                url: 'https://www.ouedkniss.com/s/1?gKeywords=%s',
+            },
+            {
+                id: 'amazon',
+                title: 'Amazon (USA #1)',
+                url: 'https://www.amazon.com/s?k=%s',
+            },
+            {
+                id: 'aliexpress',
+                title: 'AliExpress ( China #1 )',
+                url: 'https://www.aliexpress.com/wholesale?&SearchText=%s',
+            },
+            {
+                id: 'sahibinden',
+                title: 'Sahibinden.Com (Turkiye #1)',
+                url: 'https://www.sahibinden.com/vasita?query_text=%s',
+            },
+            {
+                id: 'leboncoin',
+                title: 'LeBonCoin.Fr (France)',
+                url: 'https://www.leboncoin.fr/recherche?text=%s',
+            },
 
-            'alternativeto': 'https://alternativeto.net/browse/search/?q=%s'
-        }
+            {
+                id: '_______ OTHERS',
+                title: '_______ OTHERS _____',
+                url: '',
+            },
+            {
+                id: 'lastpass',
+                title: 'LastPass Chrome Extension Vault',
+                url: 'chrome-extension://hdokiejnpimakedhajhdlcegeplioahd/vault.html',
+            },
+            {
+                id: 'alternativeto',
+                title: 'AlternativeTo.net',
+                url: 'https://alternativeto.net/browse/search/?q=%s',
+            },
+            {
+                id: 'w3schools',
+                title: 'W3Schools Via Google',
+                url: 'https://google.com/search?q=%s+site%3Aw3schools.com&hl=en'
+            },
+            {
+                id: 'alexa',
+                title: 'Amazon Alexa (Websites Analytics) [Will be Discountined in May 1, 2022]',
+                url: 'https://www.alexa.com/siteinfo/%s'
+            },
+            {
+                id: 'builtwith',
+                title: 'BuiltWith.com (To See All the Technologies used to built a certain website)',
+                url: 'https://builtwith.com/?q=%s'
+            },
+        ]
     </script>
 
 </head>
@@ -50,25 +213,33 @@
         <input type="text" id="lname" name="lname" placeholder="Doe"><br>
 
         <br>
-        <input type="checkbox" id="google" name="cb1">
-        <label for="google"> Google</label><br>
-        <input type="checkbox" id="bing" name="cb1">
-        <label for="bing"> Bing</label><br>
-        <input type="checkbox" id="duckduckgo" name="cb1">
-        <label for="duckduckgo"> duckduckgo</label><br>
-        <input type="checkbox" id="facebook" name="cb1">
-        <label for="facebook"> Facebook</label><br>
-        <input type="checkbox" id="linkedin" name="cb1">
-        <label for="linkedin"> LinkedIn</label><br>
-        <input type="checkbox" id="alternativeto" name="cb1">
-        <label for="alternativeto"> alternativeto</label>
 
-        <br><br>
+        <div id="output">
+
+            <!-- <input type="checkbox" id="google">
+            <label for="google"> Google</label><br> -->
+
+        </div>
+
+        <br>
+        <label for="pwd">Beforing using our Web App, you must enter The Password:</label><input type="password"
+            id="pwd">
+
+        <br>
         <input type="submit" value="Open Your Searches">
     </form>
 
     <script>
         $(document).ready(function () {
+
+            // generate HTML Output from a JSON array
+            SearchEnginesArrayJSON.forEach(element => {
+                $('div#output').append(`<input type="checkbox" id="${element.id}">`)
+                $('div#output').append(`<label for="${element.id}"> ${element.title}</label>`)
+                $('div#output').append(`<br>`)
+            });
+
+
             $('#myForm').submit(function (e) {
                 e.preventDefault();
                 // or return false;
@@ -77,25 +248,27 @@
                 var lname = $('#lname').val();
                 var query = `${fname} ${lname}`;
 
-                if ($('#google').prop("checked") == true) {
-                    window.open(SearchEnginesURLs.google.replace('%s', query));
-                }
-                if ($('#bing').prop("checked") == true) {
-                    window.open(SearchEnginesURLs.bing.replace('%s', query));
-                }
-                if ($('#facebook').prop("checked") == true) {
-                    window.open(SearchEnginesURLs.facebook_people.replace('%s', query));
-                }
-                if ($('#linkedin').prop("checked") == true) {
-                    window.open(SearchEnginesURLs.linkedin_people.replace('%s', query));
-                }
-                if ($('#duckduckgo').prop("checked") == true) {
-                    window.open(SearchEnginesURLs.duckduckgo.replace('%s', query));
-                }
-                if ($('#alternativeto').prop("checked") == true) {
-                    window.open(SearchEnginesURLs.alternativeto.replace('%s', query));
-                }
+                // if ($('#google').prop("checked") == true) {
+                //     window.open(SearchEnginesURLs.google.replace('%s', query));
+                // }
 
+                entered_password = $("#pwd").val()
+                switch (entered_password) {
+                    case 'Abdou':
+                        SearchEnginesArrayJSON.forEach(element => {
+                            if ($(`#${element.id}`).prop("checked") == true)
+                                window.open(`${element.url.replace('%s', query)}`);
+                        });
+                        break;
+                    case "":
+                        alert('[ ERROR, PASSWORD IS EMPTY ] => the password must NOT be empty')
+                        break;
+                    default:
+                        alert(
+                            `[ ERROR, FALSE PASSWORD ] => '${entered_password}'' is NOT Correct, try again`
+                        )
+                        break;
+                }
             });
         });
     </script>
